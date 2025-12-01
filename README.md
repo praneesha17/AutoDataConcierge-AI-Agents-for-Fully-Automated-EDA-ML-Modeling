@@ -1,4 +1,4 @@
-# AutoDataConcierge --- Multi-Agent Automated Data Science Pipeline
+# AutoDataConcierge-AI-Agents-for-Fully-Automated-EDA-ML-Modeling
 
 **AutoDataConcierge** is a modular **multi-agent system** that automates
 the early stages of data science for any CSV dataset.\
