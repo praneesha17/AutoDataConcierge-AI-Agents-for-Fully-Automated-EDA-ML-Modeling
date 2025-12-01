@@ -12,11 +12,11 @@ Capstone (Nov 2025)**.
 AutoDataConcierge automates the repetitive steps of a traditional data
 science workflow:
 
--   Dataset ingestion\
--   Exploratory Data Analysis (EDA)\
--   Feature analysis\
--   Baseline model training\
--   Best model selection\
+-   Dataset ingestion
+-   Exploratory Data Analysis (EDA)
+-   Feature analysis
+-   Baseline model training
+-   Best model selection
 -   Automated Markdown report generation
 
 ------------------------------------------------------------------------
@@ -28,9 +28,9 @@ extensible.
 
 ### Benefits
 
--   Modular & maintainable\
--   Easy plug-and-play extensions\
--   Debug-friendly\
+-   Modular & maintainable
+-   Easy plug-and-play extensions
+-   Debug-friendly
 -   Fully automated pipeline
 
 ------------------------------------------------------------------------
@@ -53,23 +53,23 @@ extensible.
 
 ### 1. DatasetIngestor
 
--   Loads CSV\
+-   Loads CSV
 -   Extracts metadata
 
 ### 2. EDAAnalyzer
 
--   Summaries\
--   Missing values\
+-   Summaries
+-   Missing values
 -   Stats
 
 ### 3. FeatureAnalyzer
 
--   Column type detection\
+-   Column type detection
 -   High-missing & low-variance flagging
 
 ### 4. ModelBuilder
 
--   Trains Linear Regression & Random Forest\
+-   Trains Linear Regression & Random Forest
 -   Selects best RMSE model
 
 ### 5. ReportGenerator
@@ -78,16 +78,16 @@ extensible.
 
 ### 6. PlannerAgent
 
--   Coordinates workflow\
+-   Coordinates workflow
 -   Generates run ID
 
 ------------------------------------------------------------------------
 
 ## 📁 Project Structure
 
-    AutoDataConcierge/
-    ├── agents/
-    ├── output/
+    AutoDataConcierge
+    ├── agents
+    ├── output
     ├── sample_run.ipynb
     ├── README.md
     └── requirements.txt
@@ -111,13 +111,8 @@ extensible.
 
 ## 📜 Outputs
 
--   EDA JSON\
--   Saved ML models\
--   Model performance\
+-   EDA JSON
+-   Saved ML models
+-   Model performance
 -   Markdown report
 
-------------------------------------------------------------------------
-
-## 📄 License
-
-MIT Recommended
