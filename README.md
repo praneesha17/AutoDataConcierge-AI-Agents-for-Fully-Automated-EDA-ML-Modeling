@@ -1,252 +1,123 @@
-AutoDataConcierge — Multi-Agent Data Science Pipeline
+# AutoDataConcierge --- Multi-Agent Automated Data Science Pipeline
 
-AutoDataConcierge is a modular multi-agent system that automates the early stages of data science for any CSV dataset.
+**AutoDataConcierge** is a modular **multi-agent system** that automates
+the early stages of data science for any CSV dataset.\
+It was developed as part of the **Kaggle × Google AI Agents Intensive
+Capstone (Nov 2025)**.
 
-The pipeline performs:
+------------------------------------------------------------------------
 
-Dataset ingestion
+## 🚀 Features
 
-Exploratory Data Analysis (EDA)
+AutoDataConcierge automates the repetitive steps of a traditional data
+science workflow:
 
-Feature analysis
+-   Dataset ingestion\
+-   Exploratory Data Analysis (EDA)\
+-   Feature analysis\
+-   Baseline model training\
+-   Best model selection\
+-   Automated Markdown report generation
 
-Baseline model training
+------------------------------------------------------------------------
 
-Best model selection
+## 🧠 Why Multi-Agent Architecture?
 
-Markdown report generation
+Each agent has a single responsibility, making the system modular and
+extensible.
 
-This project was developed as part of the Kaggle × Google AI Agents Intensive Capstone (Nov 2025).
+### Benefits
 
-Project Goals
+-   Modular & maintainable\
+-   Easy plug-and-play extensions\
+-   Debug-friendly\
+-   Fully automated pipeline
 
-Traditional data science workflows require repetitive tasks:
+------------------------------------------------------------------------
 
-reading datasets
+## 🏗️ System Architecture
 
-checking missing values
+    dataset_ingestor
+            ↓
+         eda_analyzer
+            ↓
+      feature_analyzer
+            ↓
+        model_builder
+            ↓
+      report_generator
 
-summarizing statistics
+------------------------------------------------------------------------
 
-selecting features
+## 🤖 Agent Responsibilities
 
-training first models
+### 1. DatasetIngestor
 
-writing reports
+-   Loads CSV\
+-   Extracts metadata
 
-AutoDataConcierge automates these steps end-to-end.
-Instead of manually executing cells, you call one function.
+### 2. EDAAnalyzer
 
-Why Multi-Agent Architecture?
+-   Summaries\
+-   Missing values\
+-   Stats
 
-Instead of a single monolithic script, each part of the workflow is handled by a specialized agent.
+### 3. FeatureAnalyzer
 
-One agent = one responsibility.
+-   Column type detection\
+-   High-missing & low-variance flagging
 
-Benefits:
+### 4. ModelBuilder
 
-Maintainable
+-   Trains Linear Regression & Random Forest\
+-   Selects best RMSE model
 
-Modular
+### 5. ReportGenerator
 
-Reusable
+-   Generates Markdown report
 
-Easy extension (plug-and-play)
+### 6. PlannerAgent
 
-The orchestrator (planner_agent) controls the entire pipeline.
+-   Coordinates workflow\
+-   Generates run ID
 
-System Overview
-Agent flow
-dataset_ingestor
-    ↓
-eda_analyzer
-    ↓
-feature_analyzer
-    ↓
-model_builder
-    ↓
-report_generator
+------------------------------------------------------------------------
 
+## 📁 Project Structure
 
-All components are coordinated by the planner_agent.
+    AutoDataConcierge/
+    ├── agents/
+    ├── output/
+    ├── sample_run.ipynb
+    ├── README.md
+    └── requirements.txt
 
-Agent Responsibilities
-1. DatasetIngestor
+------------------------------------------------------------------------
 
-Finds the dataset (local CSV or Kaggle input folder)
+## 📦 Installation
 
-Reads sample of the data
+    pip install -r requirements.txt
+    mkdir -p output/eda output/models
 
-Extracts metadata
+------------------------------------------------------------------------
 
-Output example:
+## 🖥️ Usage
 
-csv_path
-sample_rows
-sample_columns
+    from agents.planner_agent import run_pipeline
+    result = run_pipeline("path/to/your.csv")
+    print(result["report_path"])
 
-2. EDAAnalyzer
+------------------------------------------------------------------------
 
-Runs dataset-wide EDA
+## 📜 Outputs
 
-Computes:
+-   EDA JSON\
+-   Saved ML models\
+-   Model performance\
+-   Markdown report
 
-shape
+------------------------------------------------------------------------
 
-column dtypes
+## 📄 License
 
-missing values
-
-numeric statistics
-
-Saved to:
-
-output/eda/<run_id>_eda.json
-
-3. FeatureAnalyzer
-
-Detects numeric/categorical columns
-
-Identifies:
-
-high-missing columns (>50%)
-
-low-variance features
-
-4. ModelBuilder
-
-Trains baseline models:
-
-Linear Regression
-
-RandomForest
-
-Evaluates performance (RMSE)
-
-Selects best model
-
-Saves artifacts:
-
-output/models/<run_id>_*.joblib
-output/models/<run_id>_results.json
-
-5. ReportGenerator
-
-Generates Markdown summarizing:
-
-dataset metadata
-
-EDA insights
-
-feature summary
-
-model performance
-
-Saved to:
-
-output/report_<run_id>.md
-
-6. PlannerAgent
-
-Generates unique run ID
-
-Executes agents in sequence
-
-Returns unified results object
-
-Installation
-
-Clone the project:
-
-git clone https://github.com/<username>/AutoDataConcierge.git
-cd AutoDataConcierge
-
-
-Install dependencies:
-
-pip install -r requirements.txt
-
-
-Create output directories:
-
-mkdir -p output/eda output/models
-
-Usage
-
-Minimal example:
-
-from agents.planner_agent import run_pipeline
-
-result = run_pipeline("path/to/your.csv")
-print(result["report_path"])
-
-
-You can then open the generated Markdown report in output/.
-
-Project Structure
-AutoDataConcierge/
-│
-├── agents/
-│   ├── dataset_ingestor.py
-│   ├── eda_analyzer.py
-│   ├── feature_analyzer.py
-│   ├── model_builder.py
-│   ├── report_generator.py
-│   └── planner_agent.py
-│
-├── output/
-│   ├── eda/                # Automated EDA JSONs
-│   ├── models/             # Stored ML models
-│   └── report_<run_id>.md
-│
-├── sample_run.ipynb
-├── README.md
-└── requirements.txt
-
-Dataset Example
-
-Wine Reviews Dataset
-https://www.kaggle.com/datasets/zynicide/wine-reviews
-
-Do not upload this dataset to GitHub.
-Link to Kaggle instead.
-
-Requirements
-pandas
-numpy
-scikit-learn
-joblib
-
-Outputs
-
-The system produces:
-
-EDA Summary
-
-output/eda/<run_id>_eda.json
-
-
-Trained models
-
-output/models/<run_id>_random_forest.joblib
-output/models/<run_id>_linear_regression.joblib
-
-
-Model performance
-
-output/models/<run_id>_results.json
-
-
-Final report
-
-output/report_<run_id>.md
-
-Principles
-
-One agent → one task
-
-No manual steps
-
-All artifacts persisted
-
-Reproducible pipeline
+MIT Recommended
